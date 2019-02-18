@@ -17,81 +17,80 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-
 @Entity
-@Table(name="TB_ZOOLOGICO")
-@SequenceGenerator(name="zoo",sequenceName="TB_ZOOLOGICO",initialValue=1)
+@Table(name="T_ZOOLOGICO")
+@SequenceGenerator(name="zoo",sequenceName="SQ_T_ZOOLOGICO",allocationSize=1)
 public class Zoologico {
+	
 	@Id
-	@Column(name="CD_CODIGO")
-	@GeneratedValue(generator="zoo",strategy=GenerationType.SEQUENCE)		
+	@Column(name="cd_zoologico")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="zoo")
 	private int codigo;
 	
-	@Column(name="NM_NOME",nullable = false, length = 20)
+	@Column(name="nm_zoologico",nullable=false,length=20)
 	private String nome;
 	
-	@Column(name="QTD_ANIMAIS")
+	@Column(name="qt_animais")
 	private int quantidadeAnimais;
-	
-	@Column(name="DS_TIPO" , nullable = false, length = 15)
+
+	@Column(name="ds_tipo")
 	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
 	
-	@Column(name="HR_ABERTURA")
 	@Temporal(TemporalType.TIME)
-	private Date abertura;
+	@Column(name="hr_abertura")
+	private Date horaAbertura;
 	
-	@Column(name="HR_FECHAMENTO")
 	@Temporal(TemporalType.TIME)
-	private Date fechamento;
+	@Column(name="hr_fechamento")
+	private Date horaFechamento;
 	
-	@Column(name="DT_INAUGURACAO")
 	@Temporal(TemporalType.DATE)
-	private Date inauguracao;
+	@Column(name="dt_inauguracao")
+	private Calendar dataInauguracao;
 	
-	@Column(name="ST_EMERGENCIA")
+	@Column(name="st_emergencia")
 	private boolean emergencia;
+	
+	@Lob
+	@Column(name="fl_logo")
+	private byte[] logo;
 	
 	@Transient
 	private boolean aberto;
-	
-	@Lob
-	private byte[] logo;
-	
-
-	public Zoologico(String nome, int quantidadeAnimais, Tipo tipo, Date abertura, boolean emergencia, byte[] logo) {
-		super();
-		this.nome = nome;
-		this.quantidadeAnimais = quantidadeAnimais;
-		this.tipo = tipo;
-		this.abertura = abertura;
-		this.emergencia = emergencia;
-		this.logo = logo;
-	}
-
-
-
-	public Zoologico(String nome, int quantidadeAnimais, Tipo tipo, Date abertura, Date fechamento, Date inauguracao,
-			boolean emergencia, byte[] logo) {
-		super();
-		this.nome = nome;
-		this.quantidadeAnimais = quantidadeAnimais;
-		this.tipo = tipo;
-		this.abertura = abertura;
-		this.fechamento = fechamento;
-		this.inauguracao = inauguracao;
-		this.emergencia = emergencia;
-		this.logo = logo;
-	}
-
-
 
 	public Zoologico() {
 		super();
 	}
+	
+	public Zoologico(int codigo, String nome, int quantidadeAnimais, Tipo tipo, Date horaAbertura, Date horaFechamento,
+			Calendar dataInauguracao, boolean emergencia, byte[] logo) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.quantidadeAnimais = quantidadeAnimais;
+		this.tipo = tipo;
+		this.horaAbertura = horaAbertura;
+		this.horaFechamento = horaFechamento;
+		this.dataInauguracao = dataInauguracao;
+		this.emergencia = emergencia;
+		this.logo = logo;
+	}
 
-	
-	
+	public Zoologico(String nome, int quantidadeAnimais, Tipo tipo, Date horaAbertura, Date horaFechamento,
+			Calendar dataInauguracao, boolean emergencia, byte[] logo) {
+		super();
+		this.nome = nome;
+		this.quantidadeAnimais = quantidadeAnimais;
+		this.tipo = tipo;
+		this.horaAbertura = horaAbertura;
+		this.horaFechamento = horaFechamento;
+		this.dataInauguracao = dataInauguracao;
+		this.emergencia = emergencia;
+		this.logo = logo;
+	}
+
+
 	public int getCodigo() {
 		return codigo;
 	}
@@ -124,28 +123,28 @@ public class Zoologico {
 		this.tipo = tipo;
 	}
 
-	public Date getAbertura() {
-		return abertura;
+	public Date getHoraAbertura() {
+		return horaAbertura;
 	}
 
-	public void setAbertura(Date abertura) {
-		this.abertura = abertura;
+	public void setHoraAbertura(Date horaAbertura) {
+		this.horaAbertura = horaAbertura;
 	}
 
-	public Date getFechamento() {
-		return fechamento;
+	public Date getHoraFechamento() {
+		return horaFechamento;
 	}
 
-	public void setFechamento(Date fechamento) {
-		this.fechamento = fechamento;
+	public void setHoraFechamento(Date horaFechamento) {
+		this.horaFechamento = horaFechamento;
 	}
 
-	public Date getInauguracao() {
-		return inauguracao;
+	public Calendar getDataInauguracao() {
+		return dataInauguracao;
 	}
 
-	public void setInauguracao(Date inauguracao) {
-		this.inauguracao = inauguracao;
+	public void setDataInauguracao(Calendar dataInauguracao) {
+		this.dataInauguracao = dataInauguracao;
 	}
 
 	public boolean isEmergencia() {
@@ -156,14 +155,6 @@ public class Zoologico {
 		this.emergencia = emergencia;
 	}
 
-	public boolean isAberto() {
-		return aberto;
-	}
-
-	public void setAberto(boolean aberto) {
-		this.aberto = aberto;
-	}
-
 	public byte[] getLogo() {
 		return logo;
 	}
@@ -172,9 +163,21 @@ public class Zoologico {
 		this.logo = logo;
 	}
 
-	//********************************************************************
-	
-	
-	
+	public boolean isAberto() {
+		return aberto;
+	}
+
+	public void setAberto(boolean aberto) {
+		this.aberto = aberto;
+	}
 	
 }
+
+
+
+
+
+
+
+
+
