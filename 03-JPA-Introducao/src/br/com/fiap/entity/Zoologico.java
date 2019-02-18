@@ -63,10 +63,10 @@ public class Zoologico {
 		super();
 	}
 	
-	public Zoologico(int codigo, String nome, int quantidadeAnimais, Tipo tipo, Date horaAbertura, Date horaFechamento,
+
+	public Zoologico(String nome, int quantidadeAnimais, Tipo tipo, Date horaAbertura, Date horaFechamento,
 			Calendar dataInauguracao, boolean emergencia, byte[] logo) {
 		super();
-		this.codigo = codigo;
 		this.nome = nome;
 		this.quantidadeAnimais = quantidadeAnimais;
 		this.tipo = tipo;
@@ -77,9 +77,11 @@ public class Zoologico {
 		this.logo = logo;
 	}
 
-	public Zoologico(String nome, int quantidadeAnimais, Tipo tipo, Date horaAbertura, Date horaFechamento,
+
+	public Zoologico(int codigo, String nome, int quantidadeAnimais, Tipo tipo, Date horaAbertura, Date horaFechamento,
 			Calendar dataInauguracao, boolean emergencia, byte[] logo) {
 		super();
+		this.codigo = codigo;
 		this.nome = nome;
 		this.quantidadeAnimais = quantidadeAnimais;
 		this.tipo = tipo;

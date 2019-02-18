@@ -15,7 +15,7 @@ public class BuscaTeste {
 		EntityManager em = farica.createEntityManager();
 		
 		//Pesquisar um zoologico de id = 1
-		Zoologico zoo = em.find(Zoologico.class, 1);
+		Zoologico zoo = em.find(Zoologico.class,1);
 		System.out.println(zoo.getNome());
 		
 		//alterar o nome do zoo

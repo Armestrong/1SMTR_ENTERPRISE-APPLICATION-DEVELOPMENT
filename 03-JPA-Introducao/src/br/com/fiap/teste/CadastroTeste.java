@@ -22,7 +22,7 @@ public class CadastroTeste {
 		
 		
 		// Cadastrar um zoo
-		Zoologico zoo = new Zoologico("zoo",10,Tipo.terrestre,new Date(),new Date(),Calendar.getInstance(),
+		Zoologico zoo = new Zoologico("ZooLrt",10,Tipo.terrestre,new Date(),new Date(),Calendar.getInstance(),
 				false, null);
 		
 		em.persist(zoo);

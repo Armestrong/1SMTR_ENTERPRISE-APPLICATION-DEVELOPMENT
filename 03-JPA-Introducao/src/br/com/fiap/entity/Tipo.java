@@ -1,6 +1,6 @@
 package br.com.fiap.entity;
 
 public enum Tipo {
-	vooador,aguatico,terrestre
+	vooador,aguatico,terrestre,privado
 
 }
