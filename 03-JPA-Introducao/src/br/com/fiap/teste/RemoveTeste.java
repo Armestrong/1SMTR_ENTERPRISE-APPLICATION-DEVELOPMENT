@@ -19,7 +19,7 @@ public class RemoveTeste {
 		em.getTransaction().begin();
 		em.getTransaction().commit();
 		
-		em.close();
+			em.close();  
 		fabrica.close();
 	}
 
