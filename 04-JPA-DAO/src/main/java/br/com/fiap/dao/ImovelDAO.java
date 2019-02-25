@@ -1,8 +1,8 @@
 package br.com.fiap.dao;
 
-import javax.naming.CommunicationException;
-
 import br.com.fiap.entity.Imovel;
+import br.com.fiap.excecao.CommitException;
+import br.com.fiap.excecao.SearchNotFoundException;
 
 public interface ImovelDAO  {
 		
@@ -12,7 +12,9 @@ public interface ImovelDAO  {
 	
 	void atualizar(Imovel imovel);
 	
-	void remover(int codigo);
+	void remover(int codigo) throws SearchNotFoundException;
 	
-	void commit() throws CommunicationException;
+	void commit() throws  CommitException;
+
+
 }
