@@ -18,7 +18,7 @@ public class Atualizar {
 		EntityManager em = fabrica.createEntityManager();
 
 		ImovelDAO dao = new ImovelDAOImpl(em);
-		Imovel imovel = new Imovel(1, Tipo.CASA, 100, Calendar.getInstance(), "Av paulista");
+		Imovel imovel = new Imovel(1, Tipo.CASA, 101, Calendar.getInstance(), "Av paulista");
 
 		try {
 			dao.atualizar(imovel);

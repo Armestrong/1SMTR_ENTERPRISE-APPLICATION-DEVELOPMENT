@@ -20,7 +20,7 @@ public class ImovelDAOImpl implements ImovelDAO {
 		em.persist(imovel);
 	}
 
-	// NUNCA DE COMMIT NI FIND
+	// NUNCA DE COMMIT NO FIND
 	public Imovel consultar(int codigo) {
 		return em.find(Imovel.class, codigo);
 	}
