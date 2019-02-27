@@ -1,5 +1,6 @@
 package br.com.fiap.entity;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -17,20 +18,18 @@ import javax.persistence.TemporalType;
 
 @Entity()
 @Table(name="T_MOTORISTA")
-@SequenceGenerator(name="moto", sequenceName="SQ_T_MOTORISTA", initialValue=1)
 public class Motorista {
 	
 	@Id
 	@Column(name="NR_CARTEIRA")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "moto")
 	private int carteira;
 	
-	@Column(name="NM_NOME")
+	@Column(name="NM_NOME", nullable=false, length=150)
 	private String nome;
 	
 	@Column(name="DT_NASCIMENTO")
 	@Temporal(TemporalType.DATE)
-	private Date nascimento;
+	private Calendar nascimento;
 	
 	@Lob()
 	@Column(name="FL_CARTEIRA")
@@ -56,11 +55,11 @@ public class Motorista {
 		this.nome = nome;
 	}
 
-	public Date getNascimento() {
+	public Calendar getNascimento() {
 		return nascimento;
 	}
 
-	public void setNascimento(Date nascimento) {
+	public void setNascimento(Calendar nascimento) {
 		this.nascimento = nascimento;
 	}
 
@@ -87,7 +86,7 @@ public class Motorista {
 		super();
 	}
 
-	public Motorista(int carteira, String nome, Date nascimento, byte[] carteiraFoto, Genero genero) {
+	public Motorista(int carteira, String nome, Calendar nascimento, byte[] carteiraFoto, Genero genero) {
 		super();
 		this.carteira = carteira;
 		this.nome = nome;
@@ -96,7 +95,7 @@ public class Motorista {
 		this.genero = genero;
 	}
 
-	public Motorista(String nome, Date nascimento, byte[] carteiraFoto, Genero genero) {
+	public Motorista(String nome, Calendar nascimento, byte[] carteiraFoto, Genero genero) {
 		super();
 		this.nome = nome;
 		this.nascimento = nascimento;
