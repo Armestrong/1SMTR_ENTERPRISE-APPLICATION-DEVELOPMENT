@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "T_CORRIDA")
-@SequenceGenerator(name = "run", sequenceName = "SQ_T_CORRIDA", initialValue = 1)
+@SequenceGenerator(name = "run", sequenceName = "SQ_T_CORRIDA", allocationSize = 1)
 public class Corrida {
 
 	@Id

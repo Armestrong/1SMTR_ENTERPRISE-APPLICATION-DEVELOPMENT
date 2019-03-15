@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table
-@SequenceGenerator(name="pas",sequenceName="SQ_T_PASSAGEIRO",initialValue=1)
+@SequenceGenerator(name="pas",sequenceName="SQ_T_PASSAGEIRO",allocationSize=1)
 public class Passageiro {
 
 	@Id

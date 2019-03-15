@@ -2,10 +2,7 @@ package br.com.fiap.excecao;
 
 public class SeachNotFoundException extends Exception {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 
 	public SeachNotFoundException() {
 		super();

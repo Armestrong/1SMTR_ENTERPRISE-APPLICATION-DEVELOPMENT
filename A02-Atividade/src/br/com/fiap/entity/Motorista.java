@@ -6,18 +6,22 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity()
 @Table(name="T_MOTORISTA")
+@SequenceGenerator(name = "run", sequenceName = "SQ_T_CORRIDA", allocationSize = 1)
 public class Motorista {
 	
-	@Id
-	@Column(name="NR_CARTEIRA")
+	@Id()
+	@Column(name="NR_CARTEIRA", nullable = false)
+	@GeneratedValue(generator = "run")
 	private int carteira;
 	
 	@Column(name="NM_NOME", nullable=false, length=150)

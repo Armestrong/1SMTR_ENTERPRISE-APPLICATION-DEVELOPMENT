@@ -28,11 +28,11 @@ public abstract class GenericDAOImpl<T, K> implements GenericDAO<T, K>{
 	}
 
 	public T pesquisar(K key) throws SeachNotFoundException {
-		T table = em.find(clazz, key);
-		if(key == null)
+		T entity = em.find(clazz, key);
+		if(entity == null){
 			throw new SeachNotFoundException();
-		
-		return table;
+		}
+		return entity;
 	}
 
 	public void atualizar(T table) {

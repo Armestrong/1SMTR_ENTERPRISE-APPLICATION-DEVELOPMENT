@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity()
 @Table(name="T_VEICULO")
-@SequenceGenerator(name="vei", sequenceName="SQ_T_VEICULO", initialValue=1)
+@SequenceGenerator(name="vei", sequenceName="SQ_T_VEICULO", allocationSize=1)
 public class Veiculo {
 
 	@Id

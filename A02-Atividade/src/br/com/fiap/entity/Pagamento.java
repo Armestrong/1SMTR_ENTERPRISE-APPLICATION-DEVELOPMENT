@@ -14,7 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@SequenceGenerator(name = "pay", sequenceName = "SQ_T_PAGAMENTO", initialValue = 1)
+@SequenceGenerator(name = "pay", sequenceName = "SQ_T_PAGAMENTO", allocationSize = 1)
 @Table(name = "T_PAGAMENTO")
 public class Pagamento {
 
