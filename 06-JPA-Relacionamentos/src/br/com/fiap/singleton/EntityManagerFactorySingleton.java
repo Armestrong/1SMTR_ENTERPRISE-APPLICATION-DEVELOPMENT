@@ -8,7 +8,9 @@ public class EntityManagerFactorySingleton {
 	
 	private static EntityManagerFactory emf;
 
-	public EntityManagerFactorySingleton() {}
+	public EntityManagerFactorySingleton() {
+		
+	}
 	
 	public static EntityManagerFactory getInstace() {
 		if (emf==null) {
@@ -16,4 +18,5 @@ public class EntityManagerFactorySingleton {
 		}
 		return emf;
 	}
+		
 }
