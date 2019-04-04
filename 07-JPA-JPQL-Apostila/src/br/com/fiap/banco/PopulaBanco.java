@@ -34,7 +34,7 @@ public class PopulaBanco {
 		 * INICIO da persistencia de 3 cidades 
 		 */
 		Cidade cidade1 = new Cidade("Londrina", "PR", 14, 350);
-		Cidade cidade2 = new Cidade("SÃ£o Paulo", "SP", 11, 11000);
+		Cidade cidade2 = new Cidade("São Paulo", "SP", 11, 11000);
 		Cidade cidade3 = new Cidade("Salvador", "BA", 19, 1080);
 		
 		CidadeDAO cidadeDAO = new CidadeDAOImpl(em);
