@@ -1,10 +1,12 @@
 package br.com.fiap.teste;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.swing.text.html.HTMLDocument.HTMLReader.FormAction;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -24,17 +26,14 @@ import br.com.fiap.entity.Pacote;
 class ClienteDAOTeste {
 
 private static ClienteDAO dao;
-private static EnderecoDAO daod;
-private static CidadeDAO daoc;
-private static PacoteDAO daop;
+
 
 	
 	@BeforeAll
 	public static void intanc() {
 		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 		dao = new ClienteDAOImpl(em);
-		daod = new EnderecoDAOImpl(em);
-		daop = new PacoteDAOImpl(em);
+		
 	}
 	
 	@Test
@@ -49,8 +48,11 @@ private static PacoteDAO daop;
 		// NAO PRECISA DO FOR 
 				// LEMBARAR Q NULLPOINTEXCEPTION PODE SER O Dao do GetIntance 
 		List<Cliente> lista = dao.listaPNome("a");
+		assertNotEquals(0, lista.size());
+		
+		//Validar se os clientes retornados estao corretos 
 		for (Cliente cliente : lista) {
-			assertNotEquals(0, lista.size());
+			assertTrue(cliente.getNome().contains("a"));
 		}
 
 	}
@@ -60,21 +62,29 @@ private static PacoteDAO daop;
 	void listEstado() {
 		// NAO PRECISA DO FOR 
 		// LEMBARAR Q NULLPOINTEXCEPTION PODE SER O Dao do GetIntance 
-		List<Cliente> lista = dao.listaPorEstado("SP");
+		List<Cliente> lista = dao.listaPorEstado("BA");
+		assertNotEquals(0, lista.size());
 		
+		//Validar se o estado "BA" é verdade
 		for (Cliente cliente : lista) {
-			assertEquals(1, lista.size());
+			assertEquals("BA", cliente.getEndereco().getCidade().getUf());
+			// ou 
+			assertTrue(cliente.getEndereco().getCidade().getUf().contains("BA"));
 		}
 		
 	}
 	
 	
 	@Test
-	void obterQtdDias() {
-		
-		
+	void obterQtdDias() {	
 		List<Cliente> lista = dao.ClientesDaReserva(10);
 		assertNotEquals(0, lista.size());
+		
+		for (Cliente cliente : lista) {
+			
+		}
+		
 	}
+	
 	
 }

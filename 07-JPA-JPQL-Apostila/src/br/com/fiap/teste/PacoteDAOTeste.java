@@ -42,6 +42,12 @@ class PacoteDAOTeste {
 					
 			// esperando que venha 2 pacotes referente ao codigo 
 			assertEquals(2,lista.size());
+			
+			//validando para ver se é verdade
+			//ver no pacote todos os transportes com id 1
+			for (Pacote pacote : lista) {
+				assertEquals(1,pacote.getTransporte().getId());
+			}
 	}
 	
 	
