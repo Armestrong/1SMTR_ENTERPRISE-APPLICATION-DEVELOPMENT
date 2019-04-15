@@ -1,27 +1,21 @@
 package br.com.fiap.teste;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.swing.text.html.HTMLDocument.HTMLReader.FormAction;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import br.com.fiap.dao.CidadeDAO;
 import br.com.fiap.dao.ClienteDAO;
-import br.com.fiap.dao.EnderecoDAO;
 import br.com.fiap.dao.EntityManagerFactorySingleton;
-import br.com.fiap.dao.PacoteDAO;
 import br.com.fiap.dao.impl.ClienteDAOImpl;
-import br.com.fiap.dao.impl.EnderecoDAOImpl;
-import br.com.fiap.dao.impl.PacoteDAOImpl;
 import br.com.fiap.entity.Cliente;
-import br.com.fiap.entity.Endereco;
-import br.com.fiap.entity.Pacote;
 
 class ClienteDAOTeste {
 
@@ -85,6 +79,35 @@ private static ClienteDAO dao;
 		}
 		
 	}
+	
+	@Test
+	void buscarPnomeEDia() {	
+		List<Cliente> lista = dao.busccarPorPartNomeECid("Leandro", "Lon");
+		assertNotEquals(0, lista.size());
+		
+		for (Cliente cliente : lista) {
+			assertTrue( cliente.getNome().contains("Leandro") && cliente.getEndereco().getCidade().getNome().contains("Lon"));
+		}
+			
+	}
+	
+	
+	@Test
+	void buscarPorEstador() {	
+		List<String> estados = new ArrayList<String>();
+		estados.add("BA");
+		estados.add("SP");
+		estados.add("PR");
+		List<Cliente> lista = dao.buscarPorEstados(estados);
+		assertNotEquals(0, lista.size());
+			
+		
+		for (Cliente cliente : lista) {
+			assertTrue(estados.contains (cliente.getEndereco().getCidade().getUf() ));
+		}
+	}
+	
+	
 	
 	
 }

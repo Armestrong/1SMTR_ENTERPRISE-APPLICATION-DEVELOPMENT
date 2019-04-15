@@ -3,7 +3,6 @@ package br.com.fiap.dao;
 import java.util.List;
 
 import br.com.fiap.entity.Cliente;
-import br.com.fiap.entity.Endereco;
 
 public interface ClienteDAO extends GenericDAO<Cliente,Integer>{
 
@@ -14,4 +13,8 @@ public interface ClienteDAO extends GenericDAO<Cliente,Integer>{
 	List<Cliente> listaPorEstado(String estado);
 	
 	List<Cliente> ClientesDaReserva(int qtdReeserva);
+	
+	List<Cliente> busccarPorPartNomeECid(String nome,String cidade);
+	
+	List<Cliente>buscarPorEstados(List<String> estados);
 }

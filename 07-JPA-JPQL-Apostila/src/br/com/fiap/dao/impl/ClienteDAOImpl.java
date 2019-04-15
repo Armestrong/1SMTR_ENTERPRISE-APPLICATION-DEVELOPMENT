@@ -7,7 +7,6 @@ import javax.persistence.TypedQuery;
 
 import br.com.fiap.dao.ClienteDAO;
 import br.com.fiap.entity.Cliente;
-import br.com.fiap.entity.Endereco;
 
 public class ClienteDAOImpl extends GenericDAOImpl<Cliente,Integer> implements ClienteDAO{
 
@@ -54,6 +53,22 @@ public class ClienteDAOImpl extends GenericDAOImpl<Cliente,Integer> implements C
 				.setParameter("f", qtdReeserva)
 				.getResultList();
 	}
+
+	@Override
+	public List<Cliente> busccarPorPartNomeECid(String nome, String cidade) {
+	
+		return em.createQuery("from Cliente c where c.nome like :name and c.endereco.cidade.nome like :city",Cliente.class)
+				.setParameter("name","%"+nome+"%")
+				.setParameter("city","%"+cidade+"%").getResultList();
+	}
+
+	@Override
+	public List<Cliente> buscarPorEstados(List<String> estados) {
+		
+		return em.createQuery("from Cliente c where c.endereco.cidade.uf in(:estados)",Cliente.class)
+				.setParameter("estados",estados).getResultList();
+	}
+	
 	
 	
 	
