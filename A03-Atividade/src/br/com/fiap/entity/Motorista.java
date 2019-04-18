@@ -50,23 +50,16 @@ public class Motorista {
 	@JoinTable(name = "T_VEICULO_MOTORISTA", joinColumns = @JoinColumn(name = ""), inverseJoinColumns = @JoinColumn(name = ""))
 	private List<Veiculo> codigo;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "cd_corrida")
-	private Corrida corrida;
+	@OneToMany(mappedBy="carteira")
+	private List<Corrida> corrida;
 
+	
+	
 	public Motorista() {
 		super();
 	}
-	
-	
-	Motorista(int carteira, String nome, Calendar nascimento, byte[] carteiraFoto, Genero genero) {
-		super();
-		this.carteira = carteira;
-		this.nome = nome;
-		this.nascimento = nascimento;
-		this.carteiraFoto = carteiraFoto;
-		this.genero = genero;
-	}
+
+
 
 	public Motorista(String nome, Calendar nascimento, byte[] carteiraFoto, Genero genero) {
 		super();
@@ -76,8 +69,10 @@ public class Motorista {
 		this.genero = genero;
 	}
 
+
+
 	public Motorista(int carteira, String nome, Calendar nascimento, byte[] carteiraFoto, Genero genero,
-			List<Veiculo> codigo, Corrida corrida) {
+			List<Veiculo> codigo, List<Corrida> corrida) {
 		super();
 		this.carteira = carteira;
 		this.nome = nome;
@@ -88,62 +83,91 @@ public class Motorista {
 		this.corrida = corrida;
 	}
 
-	public List<Veiculo> getCodigo() {
-		return codigo;
-	}
 
-	public void setCodigo(List<Veiculo> codigo) {
-		this.codigo = codigo;
-	}
-
-	public Corrida getCorrida() {
-		return corrida;
-	}
-
-	public void setCorrida(Corrida corrida) {
-		this.corrida = corrida;
-	}
 
 	public int getCarteira() {
 		return carteira;
 	}
 
+
+
 	public void setCarteira(int carteira) {
 		this.carteira = carteira;
 	}
+
+
 
 	public String getNome() {
 		return nome;
 	}
 
+
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+
 
 	public Calendar getNascimento() {
 		return nascimento;
 	}
 
+
+
 	public void setNascimento(Calendar nascimento) {
 		this.nascimento = nascimento;
 	}
+
+
 
 	public byte[] getCarteiraFoto() {
 		return carteiraFoto;
 	}
 
+
+
 	public void setCarteiraFoto(byte[] carteiraFoto) {
 		this.carteiraFoto = carteiraFoto;
 	}
 
+
+
 	public Genero getGenero() {
 		return genero;
 	}
+
+
 
 	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
 
 
+
+	public List<Veiculo> getCodigo() {
+		return codigo;
+	}
+
+
+
+	public void setCodigo(List<Veiculo> codigo) {
+		this.codigo = codigo;
+	}
+
+
+
+	public List<Corrida> getCorrida() {
+		return corrida;
+	}
+
+
+
+	public void setCorrida(List<Corrida> corrida) {
+		this.corrida = corrida;
+	}
+	
+	
+	
 
 }

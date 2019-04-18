@@ -1,6 +1,7 @@
 package br.com.fiap.entity;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -37,10 +39,16 @@ public class Passageiro {
 	@Column(name="DS_GENERO")
 	private Genero genero;
 
-	@ManyToOne(cascade=CascadeType.PERSIST)
-	private Corrida corrida;
+	@OneToMany(mappedBy="passageiro")
+	private List<Corrida> corrida;
+
 	
 	
+	
+	public Passageiro() {
+		super();
+	}
+
 	public Passageiro(String nomePassageiro, Calendar nascimento, Genero genero) {
 		super();
 		this.nomePassageiro = nomePassageiro;
@@ -48,16 +56,14 @@ public class Passageiro {
 		this.genero = genero;
 	}
 
-	public Passageiro() {
-		super();
-	}
-
-	public Passageiro(int passageiro, String nomePassageiro, Calendar nascimento, Genero genero) {
+	public Passageiro(int passageiro, String nomePassageiro, Calendar nascimento, Genero genero,
+			List<Corrida> corrida) {
 		super();
 		this.passageiro = passageiro;
 		this.nomePassageiro = nomePassageiro;
 		this.nascimento = nascimento;
 		this.genero = genero;
+		this.corrida = corrida;
 	}
 
 	public int getPassageiro() {
@@ -92,6 +98,16 @@ public class Passageiro {
 		this.genero = genero;
 	}
 
+	public List<Corrida> getCorrida() {
+		return corrida;
+	}
+
+	public void setCorrida(List<Corrida> corrida) {
+		this.corrida = corrida;
+	}
+	
+	
+	
 	
 	
 	
