@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -42,27 +43,23 @@ public class Corrida {
 	@Column(name="VL_CORRIDA",nullable=false)
 	private Float valorCorrida;
 
-	@OneToMany(mappedBy="corrida")
-	private List<Motorista> motorista;
+	@ManyToOne()
+	private Motorista motorista;
+	
+	@ManyToOne()
+	private Passageiro passageiro;
+	
 	
 	@OneToOne(mappedBy="corrida")
 	private Pagamento pagamento;
+
+
 	
 	
-	
-	
-	
-	public Corrida(int corrida, String origem, String destino, Calendar dataCorrida, Float valorCorrida,
-			List<Motorista> motorista, Pagamento pagamento) {
+	public Corrida() {
 		super();
-		this.corrida = corrida;
-		this.origem = origem;
-		this.destino = destino;
-		this.dataCorrida = dataCorrida;
-		this.valorCorrida = valorCorrida;
-		this.motorista = motorista;
-		this.pagamento = pagamento;
 	}
+
 
 	public Corrida(String origem, String destino, Calendar dataCorrida, Float valorCorrida) {
 		super();
@@ -72,33 +69,17 @@ public class Corrida {
 		this.valorCorrida = valorCorrida;
 	}
 
-	public Corrida() {
-		super();
-	}
 
-	public Corrida(int corrida, String origem, String destino, Calendar dataCorrida, Float valorCorrida) {
+	public Corrida(int corrida, String origem, String destino, Calendar dataCorrida, Float valorCorrida,
+			Motorista motorista, Passageiro passageiro, Pagamento pagamento) {
 		super();
 		this.corrida = corrida;
 		this.origem = origem;
 		this.destino = destino;
 		this.dataCorrida = dataCorrida;
 		this.valorCorrida = valorCorrida;
-	}
-	
-	
-	public List<Motorista> getMotorista() {
-		return motorista;
-	}
-
-	public void setMotorista(List<Motorista> motorista) {
 		this.motorista = motorista;
-	}
-
-	public Pagamento getPagamento() {
-		return pagamento;
-	}
-
-	public void setPagamento(Pagamento pagamento) {
+		this.passageiro = passageiro;
 		this.pagamento = pagamento;
 	}
 
@@ -107,42 +88,83 @@ public class Corrida {
 		return corrida;
 	}
 
+
 	public void setCorrida(int corrida) {
 		this.corrida = corrida;
 	}
+
 
 	public String getOrigem() {
 		return origem;
 	}
 
+
 	public void setOrigem(String origem) {
 		this.origem = origem;
 	}
+
 
 	public String getDestino() {
 		return destino;
 	}
 
+
 	public void setDestino(String destino) {
 		this.destino = destino;
 	}
+
 
 	public Calendar getDataCorrida() {
 		return dataCorrida;
 	}
 
+
 	public void setDataCorrida(Calendar dataCorrida) {
 		this.dataCorrida = dataCorrida;
 	}
+
 
 	public Float getValorCorrida() {
 		return valorCorrida;
 	}
 
+
 	public void setValorCorrida(Float valorCorrida) {
 		this.valorCorrida = valorCorrida;
 	}
 
+
+	public Motorista getMotorista() {
+		return motorista;
+	}
+
+
+	public void setMotorista(Motorista motorista) {
+		this.motorista = motorista;
+	}
+
+
+	public Passageiro getPassageiro() {
+		return passageiro;
+	}
+
+
+	public void setPassageiro(Passageiro passageiro) {
+		this.passageiro = passageiro;
+	}
+
+
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+
+
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
 	
+	
+
+
 	
 }

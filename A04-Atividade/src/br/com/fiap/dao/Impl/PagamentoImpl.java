@@ -12,5 +12,14 @@ public  class PagamentoImpl extends GenericDAOImpl<Pagamento, Integer> implement
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public double AllPagamentos(int codPasg) {
+		return em.createQuery("select sum(p.valorPagamento) from Pagamento p where p.corrida.passageiro.passageiro = :p",double.class)
+				.setParameter("p", codPasg)
+				.getSingleResult();
+	}
+	
+	
+
 
 }

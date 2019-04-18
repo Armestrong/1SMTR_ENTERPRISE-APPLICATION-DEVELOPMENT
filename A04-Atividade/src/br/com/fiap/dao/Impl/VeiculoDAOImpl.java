@@ -1,5 +1,7 @@
 package br.com.fiap.dao.Impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import br.com.fiap.dao.VeiculoDAO;
@@ -12,5 +14,15 @@ public class VeiculoDAOImpl extends GenericDAOImpl<Veiculo, Integer> implements 
 		
 	}
 
+	@Override
+	public List<Veiculo> veiculoValorMinimoDoAno(int ano) {
+		
+		return em.createQuery(" from Veiculo v where v.ano <= :a .",Veiculo.class)
+				.setParameter("a",ano)
+				.getResultList();
+	}
+
+	
+	
 	
 }
