@@ -41,6 +41,37 @@ public class ConsultaPK implements Serializable {
 			return false;
 		return true;
 	}
+
+
+	public int getCrm() {
+		return crm;
+	}
+
+
+	public void setCrm(int crm) {
+		this.crm = crm;
+	}
+
+
+	public int getCodigoPaciente() {
+		return codigoPaciente;
+	}
+
+
+	public void setCodigoPaciente(int codigoPaciente) {
+		this.codigoPaciente = codigoPaciente;
+	}
+
+
+	public Calendar getDatConsulta() {
+		return datConsulta;
+	}
+
+
+	public void setDatConsulta(Calendar datConsulta) {
+		this.datConsulta = datConsulta;
+	}
+	
 	
 	
 	
