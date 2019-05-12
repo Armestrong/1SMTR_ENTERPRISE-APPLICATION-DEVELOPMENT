@@ -28,12 +28,12 @@ public class CalculadoraBOImpl extends UnicastRemoteObject implements Calculador
 	}
 
 	@Override
-	public double fatorial(int n) throws RemoteException {
-		System.out.println("Fatorando ...");
-	/*	for (int i = n - 1; i < 1; i--) {
+	public int fatorial(int n) throws RemoteException {
+		System.out.println("Fatorando...");
+		for (int i = n-1; i > 1; i--) {
 			n *= i;
-		}*/
-		return /*n;*/ (n == 1 ? 1 : fatorial(n - 1)*n);
+		}
+		return n;//(n==1?1:fatorial(n-1)*n);
 	}
 
 }

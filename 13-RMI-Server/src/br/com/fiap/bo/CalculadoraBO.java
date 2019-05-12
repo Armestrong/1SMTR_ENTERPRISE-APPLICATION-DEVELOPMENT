@@ -9,5 +9,5 @@ public interface CalculadoraBO extends Remote {
 
 	double subtrair(double n1, double n2) throws RemoteException;
 
-	double fatorial(int n) throws RemoteException;
+	int fatorial(int n) throws RemoteException;
 }

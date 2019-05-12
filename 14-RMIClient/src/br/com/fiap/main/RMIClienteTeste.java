@@ -7,8 +7,10 @@ import br.com.fiap.bo.CalculadoraBO;
 public class RMIClienteTeste {
 
 	public static void main(String[] args)throws Exception {
-		CalculadoraBO bo = (CalculadoraBO) Naming.lookup("rmi://localhost:10.3.5.25:1014/chave");
-
+		//local do professor
+		//CalculadoraBO bo = (CalculadoraBO) Naming.lookup("rmi://localhost:10.3.5.25:1014/chave");
+		CalculadoraBO bo = (CalculadoraBO) Naming.lookup("rmi://localhost/chave");
+		
 		
 		double soma = bo.somar(10, 10);
 		System.out.println("Soma " + soma);
